@@ -1,0 +1,46 @@
+<nav class="navbar sticky-top navbar-dark bg-primary">
+  <header class="text-center">
+    <b>
+      <h1>{{ title }}</h1>
+    </b>
+  </header>
+</nav>
+
+<div class="container-fluid text-center col-md-auto">
+  <hr />
+  <button class="btn btn-primary" (click)="addBox()" type="submit">
+    Add Box!
+  </button>
+  <!-- <button class="btn btn-primary mr-l-10" (click)="clear()" type="reset">
+    Clear
+  </button> -->
+  <label class="switch mr-l-10 btn">
+    <input
+      type="checkbox"
+      checked
+      (change)="onToggleKeyListen($event.target?.checked)"
+    />
+    <span class="slider round"></span>
+  </label>
+</div>
+
+<div class="container text-center col-md-auto block-div">
+  <hr />
+  <div
+    class="col-sm-2 col-md-2 col-lg-2"
+    id="BoxParent"
+    *ngFor="let square of Boxes; let i = index"
+  >
+    <div
+      (click)="onBox(i)"
+      class="square"
+      [ngStyle]="{
+        'z-index': i,
+        background: SquareFocusedId == i ? 'yellow' : ''
+      }"
+      [id]="i"
+    >
+      {{ i }}
+    </div>
+  </div>
+</div>
